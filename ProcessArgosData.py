@@ -18,6 +18,10 @@ print "There are " + str(len(lineStrings)) + " records in the file"
 # Close the file object
 fileObj.close()
 
+#Create empty dictionaries
+dateDict= {}
+locationDict = {}
+
 # Use a for loop to read each line, one at a time, until the list is exhausted
 for lineString in lineStrings:
 
@@ -34,5 +38,5 @@ for lineString in lineStrings:
     obsLon = lineData[6]                # Observation Longitude
 
     # Print information to the user
-    print "According to record " + recordID, 
-    print "Sara was seen at " + obsLat + " d LAT; " + obsLat + " d LON on " + obsDate
+    dateDict[recordID] =  obsDateTime.split()
+    locationDict[recordID] = (obsLat,obsLon)
