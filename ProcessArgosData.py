@@ -21,6 +21,7 @@ fileObj.close()
 #Create empty dictionaries
 dateDict= {}
 locationDict = {}
+omittedRecordCount = 0
 
 # Use a for loop to read each line, one at a time, until the list is exhausted
 for lineString in lineStrings:
@@ -37,6 +38,13 @@ for lineString in lineStrings:
     obsLat = lineData[5]                # Observation Latitude
     obsLon = lineData[6]                # Observation Longitude
 
-    # Print information to the user
-    dateDict[recordID] =  obsDateTime.split()
-    locationDict[recordID] = (obsLat,obsLon)
+    if obsLC in ("1","2","3"):
+        # Add values to dictionary
+        dateDict[recordID] = obsDateTime.split()   
+        locationDict[recordID] = (obsLat, obsLon)
+    else:
+        omittedRecordCount = omittedRecordCount + 1
+
+# Indicate script is complete
+print str(len(dateDict)) + " records added"
+print str(omittedRecordCount) + " records omitted"
