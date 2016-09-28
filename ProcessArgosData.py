@@ -48,3 +48,20 @@ for lineString in lineStrings:
 # Indicate script is complete
 print str(len(dateDict)) + " records added"
 print str(omittedRecordCount) + " records omitted"
+
+# Ask the user to enter a start record and and end record
+userDate = raw_input("Enter date of record (M/D/YYYY):")
+
+# Create a list of all the dictionary keys (UIDs) with a date matching the user date
+keyList = []                  #Create an empty list to which we can add keys of matching items
+for k in dateDict.keys():     #Loop through all the keys in the dateDict
+    v = dateDict[k]           #Get the value corresponding to the key in the current loop iteration
+    dateValue = v[0]          #The current value is a date, time tuple. Date is the first item in that tuple
+    if dateValue == userDate: #Check whether the date matches the user date
+        keyList.append(k)     #If it does, then add the key to the key list
+
+# Now that we have a list of keys, we can loop through them, extract the lat/long values and report them
+print "At " + userDate + ", Sara the turtle was found at:"  
+for k in keyList:                                   #Loop through the keys identified above
+    userLoc = locationDict[k]                       #Get the lat/long tuple for the current key
+    print " Lat: "+userLoc[0]+"; Lon: "+userLoc[1]  #Print them to the screen...
