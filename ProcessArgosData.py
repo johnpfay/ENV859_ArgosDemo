@@ -5,8 +5,17 @@
 # Created by: John Fay (jpfay@duke.edu)
 # Created on: Oct 2016
 
-# Copy and paste a line of data as the startLine variable value
-lineString = "20616	29051	7/3/2003 9:13	3	66	33.898	-77.958	27.369	-46.309	6	0	-126	529	3	401 651134.7	0"
+# Create a variable pointing to the file with no header
+fileName = "V:\\Scripting3\\SaraNoHeader.txt"
+
+# Open the file as a read-only file object
+fileObj = open(fileName, 'r')
+
+# Read the first line from the open file object
+lineString = fileObj.readline()
+
+# Close the file object
+fileObj.close()
 
 # Use the split command to parse the items in lineString into a list object
 lineData = lineString.split("\t")
