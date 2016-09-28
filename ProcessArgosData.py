@@ -12,10 +12,14 @@ fileName = "V:\\Scripting3\\SaraNoHeader.txt"
 fileObj = open(fileName, 'r')
 
 # Read the first line from the open file object
-lineString = fileObj.readline()
+lineStrings = fileObj.readlines()
+print "There are " + str(len(lineStrings)) + " records in the file"
+    
+# Close the file object
+fileObj.close()
 
-# Use a while loop to read each line, one at a time, until the end of the file is reached
-while lineString:
+# Use a for loop to read each line, one at a time, until the list is exhausted
+for lineString in lineStrings:
 
     # Use the split command to parse the items in lineString into a list object
     lineData = lineString.split("\t")
@@ -32,9 +36,3 @@ while lineString:
     # Print information to the user
     print "According to record " + recordID, 
     print "Sara was seen at " + obsLat + " d LAT; " + obsLat + " d LON on " + obsDate
-
-    # Read in the next line
-    lineString = fileObj.readline()
-
-# Close the file object
-fileObj.close()
